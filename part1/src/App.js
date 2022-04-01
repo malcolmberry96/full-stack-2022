@@ -1,66 +1,52 @@
-const Header = (props) => {
+import { useState } from 'react'
+
+const Header = () => {
   return (
-  <div>
-    <h1>{props.course}</h1>
-  </div>
+    <div>
+      <h1>Give Feedback</h1>
+    </div>
   )
 }
-
-const Part = (props) => {
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
-  return (
-    <p>{props.part1}</p>
-  )
-}
-
-// const Content = (props) => {
-//   return (
-//   <div>
-//    <Part {props.part1}/>
-//    <Part {props.part2}/>
-//    <Part {props.part3}/>
-//    </div>
-//   )
-// }
-
-const Total = (props) => {
-  <div>
-   <p>
-     {props.exercises1}
-     {props.exercises2}
-     {props.exercises3}
-   </p>
-   </div>
-}
-
 
 const App = () => {
-  const course = 'Half Stack Application Development'
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
+  //save clicks of each button to its own state
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
+  const [allReviews, setAll] = useState([])
+
+  const handleGoodReview = () => {
+    setAll(allReviews.concat('G'))
+    setGood(good + 1)
+  }
+
+  const handleNeutralReview = () => {
+    setAll(allReviews.concat('N'))
+    setNeutral(neutral + 1)
+  }
+
+  const handleBadReview = () => {
+    setAll(allReviews.concat('B'))
+    setBad(bad + 1)
+  }
 
   return (
   <div>
-    <Header course={course}/>
-    <p>
-     {part1}{exercises1}
-    </p>
-    <p>
-      {part2}{exercises2}
-    </p>
-    <p>
-      {part3}{exercises3}
-    </p>
-    <p>Number of exercises {exercises1 +  exercises2 + exercises3}</p>
+    <Header></Header>
+    <button onClick={handleGoodReview}>Good</button>
+    <button onClick={handleNeutralReview}>Neutral</button>
+    <button onClick={handleBadReview}>Bad</button>
+    <br></br>
+    <h2>Statistics</h2>
+     <p>
+    Good: {good}
+     <br></br>
+     Neutral: {neutral}
+     <br></br>
+     Bad: {bad}
+     <br></br>
+     All: {good + bad + neutral}
+     </p>
   </div>
 )
   }
