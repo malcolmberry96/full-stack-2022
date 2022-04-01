@@ -27,7 +27,7 @@ const App = () => {
 
   const handleBadReview = () => {
     setAll(allReviews.concat('B'))
-    setBad(bad - 1)
+    setBad(bad + 1)
   }
 
   return (
@@ -49,7 +49,7 @@ const App = () => {
      </p>
      <br></br>
      <p>
-     Average: {(good + bad + neutral)/3}
+     Average: {(good + (bad * -1) + (neutral * 0))/(good + bad + neutral)}
      <br></br>
      Percentage of Positive Reviews: {(good/(good + bad + neutral)) * 100}% 
      </p>
