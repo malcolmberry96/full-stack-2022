@@ -27,7 +27,7 @@ const App = () => {
 
   const handleBadReview = () => {
     setAll(allReviews.concat('B'))
-    setBad(bad + 1)
+    setBad(bad - 1)
   }
 
   return (
