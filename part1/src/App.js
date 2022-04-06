@@ -19,7 +19,20 @@ const Statistics = (props) => {
 }
 return (
    <div>
-      All History: {props.allReviews}
+      <p>
+    Good: {props.good}
+     <br></br>
+     Neutral: {props.neutral}
+     <br></br>
+     Bad: {props.bad}
+     <br></br>
+     All: {(props.good + props.bad + props.neutral)}
+     </p>
+     <br></br>
+     Average: {(props.good + (props.bad * -1) + (props.neutral * 0))/(props.good + props.bad + props.neutral)}
+     <br></br>
+     Percentage of Positive Reviews: {(props.good/(props.good + props.bad + props.neutral)) * 100}% 
+
    </div>
  )
 }
@@ -55,19 +68,8 @@ const App = () => {
     <br></br>
     <h2>Statistics</h2>
     <Statistics good={good} bad={bad} neutral={neutral} allReviews={allReviews}/>
-    <p>
-    Good: {good}
-     <br></br>
-     Neutral: {neutral}
-     <br></br>
-     Bad: {bad}
-     <br></br>
-     All: {(good + bad + neutral)}
-     </p>
-     <br></br>
-     Average: {(good + (bad * -1) + (neutral * 0))/(good + bad + neutral)}
-     <br></br>
-     Percentage of Positive Reviews: {(good/(good + bad + neutral)) * 100}% 
+    
+   
 
   </div>
 )
