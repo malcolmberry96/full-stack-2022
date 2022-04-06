@@ -8,6 +8,22 @@ const Header = () => {
   )
 }
 
+const Statistics = (props) => {
+
+  if (props.allReviews.length === 0) {
+  return (
+      <div>
+        <h3>No Feedback just yet</h3>
+      </div>
+  )
+}
+return (
+   <div>
+      All History: {props.allReviews}
+   </div>
+ )
+}
+
 const App = () => {
   //save clicks of each button to its own state
   const [good, setGood] = useState(0)
@@ -38,7 +54,8 @@ const App = () => {
     <button onClick={handleBadReview}>Bad</button>
     <br></br>
     <h2>Statistics</h2>
-     <p>
+    <Statistics good={good} bad={bad} neutral={neutral} allReviews={allReviews}/>
+    <p>
     Good: {good}
      <br></br>
      Neutral: {neutral}
@@ -48,11 +65,9 @@ const App = () => {
      All: {(good + bad + neutral)}
      </p>
      <br></br>
-     <p>
      Average: {(good + (bad * -1) + (neutral * 0))/(good + bad + neutral)}
      <br></br>
      Percentage of Positive Reviews: {(good/(good + bad + neutral)) * 100}% 
-     </p>
 
   </div>
 )
